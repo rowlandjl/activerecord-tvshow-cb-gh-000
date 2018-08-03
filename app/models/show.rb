@@ -1,2 +1,11 @@
 class Show < ActiveRecord::Base
-end 
+
+  def self.highest_rating
+    self.maximum(:rating)
+  end
+
+  def self.most_popular_show
+    self.find_by(rating: self.highest_rating)
+  end
+  
+end
